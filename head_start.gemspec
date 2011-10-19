@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.email       = ["adre@foxsoft.co.uk"]
   s.homepage    = ""
   s.summary     = %q{This gem extends Compass with Foxsoft's own SCSS libraries and third party Javascript libraries}
-  s.description = %q{TODO: Write a gem description}
+  s.description = %q{This gem extends Compass with Foxsoft's own SCSS libraries and third party Javascript libraries - full description pending}
 
   s.rubyforge_project = "head_start"
 

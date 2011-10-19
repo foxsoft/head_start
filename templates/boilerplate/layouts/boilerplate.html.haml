@@ -1,0 +1,27 @@
+!!! 5
+-# paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
+-ie_html :class => 'no-js', :lang => 'en' do
+
+  %head
+    -#
+      to specify a stylesheet other than application, send a local variable to the head partial, eg:
+      :locals => {:stylesheet => "name_of_stylesheet"}
+    = render :partial => "layouts/boilerplate/head", :locals => {:stylesheet => "boilerplate"}
+
+  %body{ :class => "#{controller.controller_name}" }
+    #container
+      %header#header
+        = render "layouts/boilerplate/header"
+
+      #main{ :role => "main" }
+        = render "layouts/boilerplate/flashes"
+        = yield
+
+      %footer#footer
+        = render "layouts/boilerplate/footer"
+
+    -# include various Javascript goodness at the bottom of the page for faster page loading
+    -#
+      to specify a stylesheet other than application, send a local variable to the javascripts partial, eg:
+      :locals => {:javascripts => "name_of_javascript"}
+    = render :partial => "layouts/boilerplate/javascripts", :locals => {:stylesheet => "boilerplate"}

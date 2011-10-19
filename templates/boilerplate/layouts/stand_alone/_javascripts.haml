@@ -1,0 +1,24 @@
+-# TODO: decide if and how to include Google CDN's jQuery with fallback to jquery-rails
+
+-# render javascript passed as local or fall back to application javascript
+- javascript ||= "application"
+%script{:type=>'text/javascript', :src=>"/js/#{javascript}.js"}
+
+-#
+  Google analytics - Change UA-XXXXX-X to be your site's ID
+  TODO: decide whether this is included by default and removed if not required or
+  create a partial so that it's inserted only if site id is given
+:javascript
+  window._gaq = [['_setAccount','UAXXXXXXXX1'],['_trackPageview'],['_trackPageLoadTime']];
+  Modernizr.load({
+    load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
+  });
+
+-#
+  Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+  chromium.org/developers/how-tos/chrome-frame-getting-started
+  TODO: decide if and how chrome frame should be included
+/[if lt IE 7 ]
+  %script{ :type => "text/javascript", :src => "//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js" }
+  :javascript
+    window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})

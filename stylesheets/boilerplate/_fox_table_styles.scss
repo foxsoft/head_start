@@ -1,0 +1,40 @@
+@mixin simple_table{
+/*  width:100%;*/
+  margin-bottom:1.5em;
+  margin-top:1.5em;
+  col {
+    border-right:1px solid #ccc;
+    &.rowhead {
+      border-right:2px solid #888;
+    }
+  }
+  thead {
+    border-bottom:2px solid #888;
+    tr:hover {
+      background-color:#fff;
+    }
+  }
+  tr {
+    border-bottom:1px solid #ccc;
+    &:hover {
+      background-color:#f8f8f8;
+      th {
+        background-color: white;
+      }
+    }
+  }
+  th, td {
+    border: 0;
+    padding:1em 1.5em;
+    text-align:left;
+  }
+}
+
+@mixin ie7_simple_table {
+  thead th {
+    border-bottom:2px solid #888;
+  }
+  th, td {
+    border-bottom:1px solid #ccc;
+  }
+}

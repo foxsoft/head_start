@@ -1,0 +1,78 @@
+$icons_path: "/images/messaging/";
+
+@mixin message($type, $icon_type: "small", $icon_url: "") {
+  margin:1.5em 0;
+  border: 2px solid #666;
+  background-color: #ddd;
+  background-position: 1em 1em;
+  background-repeat: no-repeat;
+  padding: 1em;
+  h3 {
+    margin-bottom:0.5em;
+  }
+  div {
+    border: 0;
+  }
+  @if $type == error {
+    color: #8A1F11;
+    border-color: #FBC2C4;
+    background-color: #FBE3E4;
+  } @else if $type == warning {
+    color: #514721;
+    border-color: #FFD324;
+    background-color: #FFF6BF;
+  } @else if $type == success {
+    color: #264409;
+    border-color: #C6D880;
+    background-color: #E6EFC2;
+  } @else if $type == notice {
+    color: #213A51;
+    border-color: #299AFF;
+    background-color: #BFE1FF;
+  }
+  @if $icon_type == small {
+    background-position: 1em 0.5em;
+    padding-left: 60px;
+    min-height: 15px;
+  } @else if $icon_type == medium {
+    padding-left: 80px;
+    min-height: 40px;
+  } @else if $icon_type == large {
+    padding-left: 100px;
+    min-height: 60px;
+  } @else if $icon_type == none {
+    background-image:none;
+  }
+  @if $icon_type != none {
+    @if $icon_url != "" {
+      @include message_icon($icon_url);
+    } @else {
+      @include message_icon("#{$icons_path}#{$type}_#{$icon_type}.png");
+    }
+  }
+  
+}
+
+@mixin error_message {
+  @include message(error, small);
+}
+
+@mixin warning_message {
+  @include message(warning, small);
+}
+
+@mixin success_message {
+  @include message(success, small);
+}
+
+@mixin notice_message {
+  @include message(notice, small);
+}
+
+@mixin waiting_message {
+  @include message(warning, small, "#{$icons_path}waiting_small.gif");
+}
+
+@mixin message_icon($path_to_icon) {
+  background-image: url($path_to_icon);
+}

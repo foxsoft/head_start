@@ -1,0 +1,129 @@
+//
+// Layout helpers
+//
+
+// Grid image configuration
+@import "compass/layout/grid-background";
+$grid-background-total-columns: 24;
+$grid-background-column-width: 30px;
+$grid-background-gutter-width: 10px;
+$grid-background-column-color: rgba(100, 100, 255, 0.1);
+$grid-background-gutter-color: rgba(100, 100, 255, 0);
+$grid-background-baseline-color: rgba(100, 100, 255, 0.5);
+$show-column-grid-backgrounds: true;
+$show-baseline-grid-backgrounds: true;
+$show-grid-backgrounds: true;
+
+// mixing to set width of element by columns
+@mixin columns-wide ($columns, $last: false, $adjustment: 0) {
+  $width: $columns * ($grid-background-column-width + $grid-background-gutter-width) - $grid-background-gutter-width - $adjustment;
+  width: $width;
+  margin-right:0;
+  @if $last == false {
+    margin-right: $grid-background-gutter-width;
+  }
+}
+
+@mixin columns-push ($columns) {
+  margin-left: $columns * ($grid-background-column-width + $grid-background-gutter-width);
+}
+
+// included to provide mixin for centered container
+@import 'blueprint/grid';
+
+
+//
+// Styling helpers
+//
+
+// colour configuration
+$foxsoft-blue: #2559A4;
+$foxsoft-dark-blue: #1D447B;
+
+$background-color: #ffffff;
+$color: #303030;
+
+$main_nav_background_color: $color;
+$main_nav_color: $background;
+$main_nav_current_background_color: $foxsoft-dark-blue;
+$main_nav_current_color: $foxsoft-blue;
+
+$form-button-background-color: #e0e0e0;
+$form-button-color: #505050;
+
+// message colours
+$error-color: #8A1F11;
+$error-border-color: #FBC2C4;
+$error-background-color: #FBE3E4;
+$warning-color: #514721;
+$warning-border-color: #FFD324;
+$warning-background-color: #FFF6BF;
+$success-color: #264409;
+$success-border-color: #C6D880;
+$success-background-color: #E6EFC2;
+$notice-color: #213A51;
+$notice-border-color: #299AFF;
+$notice-background-color: #BFE1FF;
+
+@mixin set_palette($color: $foxsoft-blue){
+  $header-background-color: $color;
+  $header-color: #ffffff;
+  $page-header-background-color: $header-background-color;
+  $page-header-color: $header-color;
+
+  #header {
+    @include background-with-css2-fallback(
+      linear-gradient(
+        lighten($header-background-color, 20%),
+        darken($header-background-color, 20%)
+      )
+    );
+    color: $header-color;
+  }
+  
+  #page h2 {
+    @include page-header($page-header-background-color, $page-header-color);
+  }
+}
+
+// pull in message styling helpers
+@import 'boilerplate/fox_message_styles';
+
+// enable the use of gradient backgrounds
+@import "compass/css3/images";
+
+// enable use of border radius
+@import "compass/css3/border-radius";
+$default-border-radius: 10px;
+
+// import form helpers
+@import "boilerplate/fox_form_styles";
+
+// import table helpers
+@import "boilerplate/fox_table_styles";
+
+// import foxsoft menu styling helpers
+@import "boilerplate/fox_menu_styles";
+
+// page headers
+@mixin page-header($background-base-color, $text-color) {
+  margin: 0 0 1.1em 0;
+  border-width: 2px 0;
+  border-style: solid;
+  border-top-color: lighten($background-base-color, 20%);
+  border-bottom-color: darken($background-base-color, 25%);
+  @include border-radius($default-border-radius $default-border-radius 0 0);
+  padding: 0.6em ($grid-background-column-width + $grid-background-gutter-width);
+  @include background-with-css2-fallback(
+    linear-gradient(
+      lighten($background-base-color, 10%),
+      darken($background-base-color, 10%)
+    )
+  );
+  font-size:15px;
+  font-weight:bold;
+  color: $text-color;
+}
+
+
+

@@ -1,0 +1,33 @@
+!!! 5
+-# paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
+<!--[if lt IE 7]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if gt IE 8]><!-->
+%html.no-js{ :lang => "en" }
+  <!--<![endif]-->
+
+  %head
+    -#
+      to specify a stylesheet other than application, send a local variable to the head partial, eg:
+      :locals => {:stylesheet => "name_of_stylesheet"}
+    = render_partial "boilerplate/head", :page_title => page_title, :site_title => site_title, :locals => {:stylesheet => "boilerplate"}
+
+  %body{ :class => "#{page_title}" }
+    #container
+      %header#header
+        = render_partial "boilerplate/header", :page_title => page_title
+
+      #main{ :role => "main" }
+        // TODO: decide if/how we're going to use flashes
+        /= render_partial "boilerplate/flashes"
+        = yield
+
+      %footer#footer
+        = render_partial "boilerplate/footer"
+
+    -# include various Javascript goodness at the bottom of the page for faster page loading
+    -#
+      to specify a stylesheet other than application, send a local variable to the javascripts partial, eg:
+      :locals => {:javascripts => "name_of_javascript"}
+    = render_partial "boilerplate/javascripts", :locals => {:stylesheet => "boilerplate"}

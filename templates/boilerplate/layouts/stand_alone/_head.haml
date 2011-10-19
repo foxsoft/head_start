@@ -1,0 +1,27 @@
+%meta{ :charset => "utf-8" }/
+%title
+  == #{page_title} :: #{site_title}
+
+%meta{ :name => "description", :content => "" }/
+%meta{ :name => "author", :content => "" }/
+
+-# Mobile viewport optimized: j.mp/bplateviewport
+%meta{ :name => "viewport", :content => "width=device-width,initial-scale=1"}/
+
+-# Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons
+-# TODO: check that these are found in the asset pipeline
+
+-# render stylesheet passed as local or fall back to application stylesheet
+-# CSS: implied media=all
+- stylesheet ||= "application"
+%link{:rel=>'stylesheet', :type=>'text/css', :href=>"/css/#{stylesheet}.css"}
+
+-# More ideas for your <head> here: h5bp.com/d/head-Tips
+
+-#
+  All JavaScript at the bottom, except for Modernizr / Respond.
+  Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
+  For optimal performance, use a custom Modernizr build: www.modernizr.com/download/
+  this version of modernizr includes all core tests, html5shiv, yepnope and respond.js
+// TODO: Work out whether we can use vendor/assets for modernizr
+/ = javascript_include_tag "modernizr"

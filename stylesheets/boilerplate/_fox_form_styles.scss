@@ -1,0 +1,353 @@
+// enable accessible text-hiding
+@import "compass/typography/text/replacement";
+
+// New Stuff
+
+$button_icons_path: '/assets/icons/buttons/silk/';
+// geomicons test icons
+/*$button_icons_path: '/assets/icons/buttons/geomicons/';*/
+
+@mixin form {
+  overflow-x: hidden;
+  padding-bottom:1.5em;
+  fieldset {
+    margin-bottom:1.5em;
+    border-bottom:1px solid #999;
+    fieldset {
+      margin-bottom:0;
+      border-bottom:0;
+      clear: left;
+      @include clearfix;
+      margin:1.8em 0 1em;
+    }
+    legend {
+      @include float(left);
+      @include columns-wide(8);
+      text-align:right;
+      font-size:1.25em;
+      margin-bottom:1em;
+      color: $color;
+    }
+    abbr, .error {
+      color:red;
+    }
+    .error {
+      @include float(left);
+      margin: 3px 6px 3px 0;
+    }
+    
+  }
+  .input {
+    clear: left;
+    @include clearfix;
+    margin:1.8em 0 1em;
+    &.required {
+      input,textarea,div {
+        background-color:#FFF4EE;
+      }
+    }
+    label {
+      @include float(left);
+      @include columns-wide(8);
+      padding:3px 0;
+      text-align:right;
+      line-height: 1.5em;
+    }
+    input, textarea {
+      @include float(left);
+      @include columns-wide(8, false, 6px);
+      line-height: 1.5em;
+      &.postcode {
+        @include input-w(7);
+      }
+      &.date {
+        @include input-w(6);
+      }
+      &.input-w2 {
+        @include input-w(2);
+      }
+      &.input-w5 {
+        @include input-w(5);
+      }
+      &.input-w10 {
+        @include input-w(10);
+      }
+      &.input-w20 {
+        @include input-w(20);
+      }
+      &.input-w40 {
+        @include input-w(40);
+      }
+      &.input-w80 {
+        @include input-w(80);
+      }
+    }
+    textarea {
+      height: 9em;
+    }
+    select {
+      @include float(left);
+      width:auto;
+      margin: 3px 6px 3px 0;
+      height:1.5em;
+    }
+  }
+  .input.radio {
+    div {
+      @include float(left);
+      @include columns-wide(8, false);
+      span {
+        @include clearfix;
+        margin: 3px 6px 3px 0;
+        padding-left:7px;
+        display:block;
+      }
+      input {
+        @include float(left);
+        width:auto;
+        height:1.5em;
+      }
+      label {
+        width:auto;
+        padding:0;
+        margin-right:20px;
+      }
+    }
+  }
+  .input.boolean {
+    @include columns-push(8);
+    input {
+      margin: 3px 6px 3px 0px;
+      width:auto;
+      height:1.5em;
+    }
+    label {
+      width:auto;
+    }
+  }
+  .form_buttons {
+    @include columns-push(8);
+    margin-top:1.8em;
+  }
+  .button {
+    @include button;
+  }
+  
+}
+
+@mixin login-box-form {
+  @include form;
+  @include border-radius;
+  background-color:$background-color;
+  fieldset {
+    margin-bottom:0.5em;
+    border:0;
+    .input {
+      label {
+        @include columns-wide(3);
+      }
+      input {
+        @include columns-wide(5, false, 6px);
+      }
+    }
+  }
+  .form_buttons {
+    @include columns-push(3);
+    margin-top:1.2em;
+  }
+}
+
+@mixin button {
+  display:inline-block;
+  margin-right:0.5em;
+  @include border-radius;
+  border: 1px solid darken($form-button-background-color, 10%);
+  padding: 0.5em 1em;
+  @include background-with-css2-fallback(
+    linear-gradient(
+      lighten($form-button-background-color, 10%),
+      darken($form-button-background-color, 10%)
+    )
+  );
+  color: $form-button-color;
+  font-weight:bold;
+  text-decoration:none;
+  &:hover {
+    @include background-with-css2-fallback(
+      linear-gradient(
+        darken($form-button-background-color, 10%),
+        lighten($form-button-background-color, 10%)
+      )
+    );
+  }
+  @include button-icons;
+  &.no-text {
+    @include hide-text;
+    padding: 0;
+    margin-top:0.25em;
+    span {
+      width: 16px;
+      padding-left:0;
+    }
+  }
+}
+
+@mixin button-icons {
+  padding-left:10px;
+  span {
+    display:block;
+    height: 16px;
+    vertical-align:bottom;
+    background:transparent none left top no-repeat;
+    width:auto;
+  }
+  &.positive span {
+    padding-left:22px;
+    background-image:url($button_icons_path+'positive.png');
+  }
+  &.negative span {
+    padding-left:22px;
+    background-image:image-url("#{$button_icons_path}negative.png");
+  }
+
+  &.index span {
+    padding-left:22px;
+    background-image:image-url("#{$button_icons_path}index.png");
+  }
+  &.new span {
+    padding-left:22px;
+    background-image:image-url("#{$button_icons_path}new.png");
+  }
+  &.show span {
+    padding-left:22px;
+/*    background-image:image-url("#{$button_icons_path}show.png");*/
+    background-image:image-url("#{$button_icons_path}show2.png");
+  }
+  &.create span {
+    padding-left:22px;
+    background-image:image-url("#{$button_icons_path}create.png");
+  }
+  &.edit span {
+    padding-left:22px;
+    background-image:image-url("#{$button_icons_path}edit.png");
+  }
+  &.update span {
+    padding-left:22px;
+    background-image:image-url("#{$button_icons_path}update.png");
+  }
+  &.destroy span {
+    padding-left:22px;
+    background-image:image-url("#{$button_icons_path}destroy.png");
+  }
+
+  &.back span {
+    padding-left:22px;
+    background-image:image-url("#{$button_icons_path}back.png");
+  }
+  &.print span {
+    padding-left:22px;
+    background-image:image-url("#{$button_icons_path}print.png");
+  }
+  &.download span {
+    padding-left:22px;
+    background-image:image-url("#{$button_icons_path}download.png");
+  }
+}
+
+// Old Stuff
+
+/* standard form styling */
+@mixin standard-form {
+  & div.message {
+    margin:1em !important;
+  }
+  fieldset {
+    .input {
+      .error, .hint {
+        display:block;
+        width:32%;
+        margin:0.5em 0 0.5em 24%;
+      }
+      .hint {
+        font-style:italic;
+        color: #666;
+        ul, ol, dl {
+          margin-top:0.5em !important; 
+        }
+      }
+    }
+  }
+  .input.radio, .input.check_boxes {
+    div {
+      padding:1px;
+      border:2px solid transparent;
+      padding-top:0.5em;
+      label {
+        line-height: 1em;
+        font-size:1em;
+      }
+      input {
+        height:1em;
+      }
+    }
+    .collection_radio, .collection_check_boxes {
+      position: relative;
+      float:none;
+      display:block;
+      width:auto;
+      margin: 0 0 0.5em ;
+      padding-left:1.5em;
+      text-align:left;
+      &:last-child {
+        margin-bottom:0;
+      }
+      input {
+        width:auto;
+        margin-right:0.5em;
+        position: absolute;
+        left: -0em;
+      }
+    }
+    .error {
+      width:auto;
+    }
+  }
+}
+
+@mixin input-w($width) {
+  width: $width*13px;
+}
+
+@mixin bg_gradient($start_color, $end_color) {
+  @include background-with-css2-fallback(
+    linear-gradient(
+      $start_color,
+      $end_color
+    )
+  );
+}
+
+
+
+
+/*jquery ui defaults*/
+@mixin ui-form {
+  fieldset {
+    .input {
+      input {
+        &.ui-date-text {
+          @include input-w(6);
+        }
+      }
+      .ui-slider-horizontal {
+        display:inline-block;
+        margin-top:0.3em;
+        margin-right:1.5%;
+      }
+      .ui-datepicker-trigger {
+        margin-top:0.5em;
+      }
+    }
+  }
+}
+

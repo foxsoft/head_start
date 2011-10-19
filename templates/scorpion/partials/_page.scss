@@ -1,0 +1,485 @@
+@import "compass/css3";
+
+//-----------------------------------------------
+// The following html5-boilerplate styles should
+// probably be customized for each site
+//-----------------------------------------------
+
+body, select, input, textarea {
+  color: $font-color;
+  // Set your base font here, to apply evenly
+  // font-family: Georgia, serif;
+}
+
+//Headers (h1, h2, etc) have no default font-size or margin; define those yourself
+h1, h2, h3, h4, h5, h6 {
+  // Bold might not be the best choice if you are
+  // embedding a @font-face that's already bold
+  font-weight: bold;
+}
+
+a, a:active, a:visited { color: $link-color; }
+a:hover { color: $link-hover-color; }
+
+strong, th {
+  font-weight: bold;
+}
+
+small {
+  // Use font-size mixin to convert to percentage for YUI
+  // http://developer.yahoo.com/yui/3/cssfonts/#fontsize
+  @include font-size(11px);  // approx 85% when base-font-size eq 13px
+}
+
+// Add the 'required' attribute on your
+// inputs if you want to use these
+input:valid, textarea:valid {}
+input:invalid, textarea:invalid {
+  @include border-radius(1px);
+  @include single-box-shadow(red, 0, 0, 5px, 0);
+}
+.no-boxshadow input:invalid,
+.no-boxshadow textarea:invalid { background-color: #f0dddd; }
+
+
+//-----------------------------------
+// Add your own custom styles below
+//-----------------------------------
+
+@import 'scorpion';
+
+@mixin bg_gradient($start_color, $end_color) {
+  /* fallback */
+  background-color: $start_color;
+  /* Firefox 3.6+ */
+  background: -moz-linear-gradient(100% 100% 90deg, $end_color, $start_color);
+  /* Safari 4-5, Chrome 1-9 */
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from($start_color), to($end_color));
+  /* Safari 5.1+, Chrome 10+ */
+  background: -webkit-linear-gradient($end_color, $start_color);
+  /* Opera 11.10+ */
+  background: -o-linear-gradient($end_color, $start_color);
+}
+
+@mixin button {
+  display:block;
+  @include bg_gradient(#fff, #ccc);
+  border-radius: 7px;
+  -moz-border-radius: 7px;
+  color: #555;
+  cursor: pointer;
+  border: none;
+  padding: 0.75em 1.25em;
+  border: 1px solid #ccc;
+  text-decoration:none;
+  &:hover {
+    @include bg_gradient(#fff, #DDD);
+  }
+  font-weight:bold;
+}
+
+body {}
+
+#container {}
+
+#header {
+  background-color:#E92A18;
+  img {
+    float:left;
+    margin-right:3em;
+  }
+  h1 {
+    text-align:right;
+    margin-bottom:10px;
+  }
+}
+
+#main-navigation {
+  @include bg_gradient(#290000, #0F0000)
+}
+
+#user-navigation,
+#main-navigation ul li a:link,
+#main-navigation ul li a:visited,
+#main-navigation ul li a:hover,
+#main-navigation ul li a:active,
+.secondary-navigation ul li a:link,
+.secondary-navigation ul li a:visited,
+.secondary-navigation ul li a:hover,
+.secondary-navigation ul li a:active,
+#user-navigation ul li a:link,
+#user-navigation ul li a:visited,
+#user-navigation ul li a:hover,
+#user-navigation ul li a:active {
+  text-decoration: none;
+  color: $header_text_color;
+}
+
+#main-navigation ul .active {
+  padding: 8px 15px;
+  background: #f0f0ee;
+  -moz-border-radius-topleft: 4px;
+  -webkit-border-top-left-radius: 4px;
+  -moz-border-radius-topright: 4px;
+  -webkit-border-top-right-radius: 4px;
+  &:link, &:visited, &:hover, &:active {
+    color: #2a0000;
+  }
+}
+
+
+
+#user-navigation ul li.logout a {
+  background: #771415;
+  border-bottom-left-radius: 3px 3px;
+  border-bottom-right-radius: 3px 3px;
+  border-top-left-radius: 3px 3px;
+  border-top-right-radius: 3px 3px;
+  padding: 2px 6px;
+}
+
+#job_info {
+  position:relative;
+}
+
+#job_status_menu {
+  position:absolute;
+  top: -8px;
+  right: 8px;
+  & {
+    list-style:none;
+    li {
+      float:left;
+      margin-left:1em;
+      a {
+        @include button;
+      }
+    }
+  }
+}
+
+#main {
+  #box {
+    padding-top:10em;
+    h2 {
+      margin-bottom:1.5em;
+    }
+    .message {
+      margin-top:0;
+    }
+    .fieldWithErrors {
+      text-align:right;
+    }
+  }
+  width: 100%;
+  margin-bottom:60px;
+  h2 {
+    margin-top:1.5em;
+    margin-bottom:1em;
+    padding-bottom:0.25em;
+    border-bottom:2px solid #290000;
+  }
+  .errorExplanation {
+    @include error_message;
+    h2 {
+      margin-top:0;
+      margin-left:0 !important;
+      border-bottom:1px solid #F1BBBD;
+      font-size:1.2em;
+    }
+  }
+  .message {
+    p {
+      margin-top:0;
+    }
+    &.error, &.alert {
+      @include error_message;
+    }
+    &.warning {
+      @include warning_message;
+    }
+    &.waiting {
+      @include waiting_message;
+    }
+    &.success {
+      @include success_message;
+    }
+    &.notice {
+      @include notice_message;
+    }
+  }
+  a.button {
+    @include button;
+  }
+  .block {
+    margin-bottom:0;
+    .secondary-navigation {
+      cursor:pointer;
+      @include bg_gradient(#B40000, #9B0000);
+      &.inactive {
+        @include bg_gradient(#771415, #601012);
+      }
+      li {
+        float:none;
+        padding:0.5em 1em ;
+      }
+      h3 {
+        margin:0;
+        font-weight:bold;
+        text-align:center;
+        color: $header_text_color;
+      }
+    }
+    .content {
+      .inner {
+        padding-top:1em;
+        .pagination {
+          height: 30px;
+        }
+      }
+    }
+  }
+  .table {
+    .status {
+      span {
+        display:inline-block;
+        width:16px;
+        height:16px;
+        margin-right:5px;
+      }
+      .priority {
+        background:transparent image-url('icons/priority1.png') top left no-repeat;
+      }
+      .accepted {
+        background:transparent image-url('icons/job_accepted.png') top left no-repeat;
+      }
+      .unaccepted {
+        background:transparent image-url('icons/job_unaccepted.png') top left no-repeat;
+      }
+      .declined {
+        background:transparent image-url('icons/job_declined.png') top left no-repeat;
+      }
+      .completed {
+        background:transparent image-url('icons/job_completed2.png') top left no-repeat;
+      }
+      .portal {
+        background:transparent image-url('icons/sentby_portal1.png') top left no-repeat;
+      }
+      .post {
+        background:transparent image-url('icons/sentby_post.png') top left no-repeat;
+      }
+      .email {
+        background:transparent image-url('icons/sentby_email.png') top left no-repeat;
+      }
+      .fax {
+        background:transparent image-url('icons/sentby_fax1.png') top left no-repeat;
+      }
+    }
+    th {
+      @include bg_gradient(#e0e0e0,#d0d0d0);
+      color:#290000;
+    }
+  }
+  
+}
+
+#creation_menu_fader {
+  position: fixed;
+  bottom: 60px;
+  background:transparent image-url('fader.png') left top repeat-x;
+  height: 40px;
+  width:100%;
+}
+
+#creation_menu {
+  position:fixed;
+  @include bg_gradient(#333, #000);
+  width:100%;
+  bottom: 0;
+  min-width: 960px;
+  height: 60px;
+  ul {
+    @include clearfix;
+    margin:0;
+    margin-left:30px;
+    float:left;
+    position: relative;
+    width:auto;
+    list-style:none;
+    li {
+      float:left;
+      margin:1em 0.5em;
+      form {
+        display:inline;
+        &#search_jobs {
+          label {
+            color: white;
+            display: inline;
+            margin-right:1em;
+            font-weight:bold;
+          }
+          input#case_reference {
+            padding:5px;
+            margin-right:5px;
+          }
+          input.button, a {
+            padding:6px 10px;
+            display: inline;
+          }
+        }
+      }
+      a {
+        @include button;
+        line-height: 16px;
+        &.icon {
+          padding-left:10px;
+          span {
+            padding-left:24px;
+            display:block;
+            height: 16px;
+            vertical-align:bottom;
+          }
+          .print_button {
+            background:transparent image-url('icons/button_print.png') left top no-repeat;
+          }
+          .task_button {
+            background:transparent image-url('icons/button_task.png') left top no-repeat;
+          }
+          .document_button {
+            background:transparent image-url('icons/button_document.png') left top no-repeat;
+          }
+          .photo_button {
+            background:transparent image-url('icons/button_photo.png') left top no-repeat;
+          }
+          .invoice_button {
+            background:transparent image-url('icons/button_invoice.png') left top no-repeat;
+          }
+          .accept_button {
+            background:transparent image-url('icons/button_accept.png') left top no-repeat;
+          }
+          .decline_button {
+            background:transparent image-url('icons/button_decline.png') left top no-repeat;
+          }
+          .complete_button {
+            background:transparent image-url('icons/button_complete.png') left top no-repeat;
+          }
+          .back_button {
+            background:transparent image-url('icons/button_back.png') left top no-repeat;
+          }
+          .edit_button {
+            background:transparent image-url('icons/button_task.png') left top no-repeat;
+          }
+          .delete_button {
+            background:transparent image-url('icons/button_decline.png') left top no-repeat;
+          }
+          .report_button {
+            background:transparent image-url('icons/button_report.png') left top no-repeat;
+          }
+        }
+      }
+    }
+  }
+}
+
+form, .form {
+  input.button {
+    @include button;
+    display:inline;
+    margin-right:0.5em;
+  }
+  label.label, input.text_field, textarea.text_area, input.divider-dash {
+    font-size: 1.2em;
+    padding: 1px 0;
+    margin: 0;
+  }
+  input.example {
+    color:#aaa;
+  }
+  input.text_field, textarea.text_area, input.divider-dash {
+    width: 100%;
+    border: 1px solid #2a0000;
+  }
+  input.format-d-m-y {
+    width: 20%;
+  }
+}
+
+#captioned_photos {
+  #photo_list {
+    @include clearfix;
+    padding-bottom:100px;
+    #report_id {
+      display:none;
+    }
+    .captioned_photo {
+      position:relative;
+      float:left;
+      border:1px solid #ccc;
+      margin:8px;
+      padding:2px;
+      .delete {
+        position:absolute;
+        top: 2px;
+        right: 2px;
+      }
+      img {
+        display:block;
+        width:200px;
+        height:150px;
+        padding-bottom:5px;
+        border-bottom:1px solid #ccc;
+      }
+      .capimage {
+        margin:0;
+        padding:5px;
+        text-align:center;
+        cursor:pointer;
+      }
+      .capbox {
+        position: absolute;
+        width:198px;
+        bottom: -100px;
+        left: 0;
+        padding:2px;
+        padding-bottom:5px;
+        background-color:#FFF;
+        border:1px solid #ccc;
+        z-index:1;
+        textarea {
+          display:block;
+          width:195px;
+          margin-bottom:5px;
+        }
+      }
+      &.add_photo {
+        height: 180px;
+        h4 {
+          margin:0;
+          margin-top:5px;
+          margin-bottom:5px;
+          text-align:center;
+          border-bottom:1px solid #ccc;
+        }
+        p {
+          margin:13px 5px;
+          label {
+            display:block;
+            margin-bottom:4px;
+            font-weight:bold;
+          }
+          #captioned_photo_photo {
+            width:190px;
+          }
+          textarea {
+            height:3em;
+            width:188px;
+          }
+        }
+      }
+    }
+  }
+}
+
+footer {
+  margin-top:1.5em;
+}

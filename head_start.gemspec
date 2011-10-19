@@ -6,9 +6,9 @@ Gem::Specification.new do |s|
   s.name        = "head_start"
   s.version     = HeadStart::VERSION
   s.authors     = ["Adre Du Toit"]
-  s.email       = ["adre.dutoit@foxsoft.net"]
+  s.email       = ["adre@foxsoft.co.uk"]
   s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
+  s.summary     = %q{This gem extends Compass with Foxsoft's own SCSS libraries and third party Javascript libraries}
   s.description = %q{TODO: Write a gem description}
 
   s.rubyforge_project = "head_start"
@@ -18,7 +18,5 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  # specify any dependencies here; for example:
-  # s.add_development_dependency "rspec"
-  # s.add_runtime_dependency "rest-client"
+  s.add_development_dependency "compass"
 end

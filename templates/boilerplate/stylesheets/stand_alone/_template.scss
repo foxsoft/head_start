@@ -1,0 +1,11 @@
+/*
+ * This is a manifest file that'll automatically include all constituant styles for boilerplate
+ * in most cases you ONLY NEED TO EDIT PRIMARY STYLES
+ * 
+*/
+
+@import 'normalize';
+@import 'custom_styles'; // Custom Styles is where the app-specific styles go
+@import 'styling_helpers';
+@import 'media';
+@import 'print';

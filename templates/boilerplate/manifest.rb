@@ -63,20 +63,20 @@ This is a Compass extension based on HTML5 Boilerplate (2.0) by Paul Irish
 
 Rails Installation
 ========================
-$ gem install jumpstart
+$ gem install head_start
 $ cd my_rails_project
-$ compass init rails -r jumpstart -u jumpstart/boilerplate --force
+$ compass init rails -r head_start -u head_start/boilerplate --force
 
 
 Standalone Installation (use for Frank installations)
 ======================================================
-$ gem install jumpstart
+$ gem install head_start
 $ cd my_rails_project
-$ compass init stand_alone -r jumpstart -u jumpstart/boilerplate --force
+$ compass init stand_alone -r head_start -u head_start/boilerplate --force
 
 }
 
 welcome_message %Q{
-You've installed Jumpstart Boilerplate. Good for you!
+You've installed Head Start Boilerplate. Good for you!
 
 }

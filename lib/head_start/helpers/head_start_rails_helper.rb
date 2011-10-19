@@ -37,11 +37,7 @@ module HeadStartRailsHelper
   # download
   #
   def button_link_to(button_text, path, options = {})
-    if options[:class]
-      options[:class] += " button"
-    else
-      options[:class] = "button"
-    end
+    options = add_class "button", options
     name = "<span>#{button_text}</span>".html_safe
     link_to name, path, options
   end
@@ -52,8 +48,9 @@ module HeadStartRailsHelper
   end
   
   def context_aware_link_to(name, url, options = {})
-    link = link_to_unless_current(name, url, options) do |name,url, options|
-      link_to(name,url,options[:class] += " current")
+    options = add_class "current", options
+    link = link_to_unless_current(name, url, options) do |name,url,options|
+      link_to(name,url,options)
     end
     link.html_safe
   end

@@ -76,3 +76,27 @@
     }
   }
 }
+
+@mixin link_menu {
+  ul {
+    li {
+      @include float(left);
+      a {
+        padding:0em 0.75em;
+        text-decoration:none;
+        color:$color;
+        border-right:1px solid darken($color, 50%);
+      }
+      a {
+        &:hover {
+          text-decoration:underline;
+          color:lighten($color, 20%);
+        }
+        &.last {
+          border-width:0;
+        }
+      }
+    }
+  }
+}
+

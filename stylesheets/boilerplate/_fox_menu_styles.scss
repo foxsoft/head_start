@@ -43,7 +43,6 @@
 
 @mixin block_menu {
   ul {
-    position:relative;
     @include clearfix;
     border:0px solid darken($main_nav_background_color, 20%);
     padding:1px 0;

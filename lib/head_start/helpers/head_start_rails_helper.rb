@@ -48,8 +48,8 @@ module HeadStartRailsHelper
   end
   
   def context_aware_link_to(name, url, options = {})
-    options = add_class "current", options
     link = link_to_unless_current(name, url, options) do |name,url,options|
+      options = add_class "current", options
       link_to(name,url,options)
     end
     link.html_safe

@@ -3,7 +3,6 @@ $message_icons_path: "/assets/icons/messages/";
 @mixin messages {
   .error {
     @include error_message;
-/*    @include waiting_message;*/
   }
   .warning {
     @include warning_message;

@@ -72,6 +72,10 @@ $notice-background-color: #BFE1FF;
   $page-header-color: $header-color;
 
   #header {
+    @include filter-gradient(
+        lighten($header-background-color, 20%),
+        darken($header-background-color, 20%)
+    ); // for ie compatibility
     @include background-with-css2-fallback(
       linear-gradient(
         lighten($header-background-color, 20%),
@@ -114,6 +118,10 @@ $default-border-radius: 10px;
   border-bottom-color: darken($background-base-color, 25%);
   @include border-radius($default-border-radius $default-border-radius 0 0);
   padding: 0.6em ($grid-background-column-width + $grid-background-gutter-width);
+  @include filter-gradient(
+      lighten($background-base-color, 10%),
+      darken($background-base-color, 10%)
+  ); // for ie compatibility
   @include background-with-css2-fallback(
     linear-gradient(
       lighten($background-base-color, 10%),

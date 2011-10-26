@@ -163,6 +163,10 @@ $button_icons_path: '/assets/icons/buttons/silk/';
   @include border-radius;
   border: 1px solid darken($form-button-background-color, 10%);
   padding: 0.5em 1em;
+  @include filter-gradient(
+      lighten($form-button-background-color, 10%),
+      darken($form-button-background-color, 10%)
+  ); // for ie compatibility
   @include background-with-css2-fallback(
     linear-gradient(
       lighten($form-button-background-color, 10%),
@@ -173,6 +177,10 @@ $button_icons_path: '/assets/icons/buttons/silk/';
   font-weight:bold;
   text-decoration:none;
   &:hover {
+    @include filter-gradient(
+        darken($form-button-background-color, 10%),
+        lighten($form-button-background-color, 10%)
+    ); // for ie compatibility
     @include background-with-css2-fallback(
       linear-gradient(
         darken($form-button-background-color, 10%),
@@ -319,6 +327,10 @@ $button_icons_path: '/assets/icons/buttons/silk/';
 }
 
 @mixin bg_gradient($start_color, $end_color) {
+  @include filter-gradient(
+      $start_color,
+      $end_color
+  ); // for ie compatibility
   @include background-with-css2-fallback(
     linear-gradient(
       $start_color,

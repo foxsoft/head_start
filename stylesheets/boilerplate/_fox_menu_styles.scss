@@ -6,6 +6,10 @@
     margin-bottom:1.5em;
     @include border-radius;
     border:1px solid #999;
+    @include filter-gradient(
+        lighten($color, 10%),
+        darken($color, 10%)
+    ); // for ie compatibility
     @include background-with-css2-fallback(
       linear-gradient(
         lighten($color, 10%),

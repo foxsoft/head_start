@@ -12,11 +12,17 @@ if Compass.configuration.project_type == :rails
 
   file 'javascripts/boilerplate.js', :to => 'app/assets/javascripts/layouts/boilerplate.js'
 
-  html '404.html'
-  html 'crossdomain.xml'
-  html 'htaccess', :to => '.htaccess'
-  html 'humans.txt'
-  html 'robots.txt'
+  html 'root_files/404.html'
+  html 'root_files/crossdomain.xml'
+  html 'root_files/htaccess', :to => '.htaccess'
+  html 'root_files/humans.txt'
+  html 'root_files/robots.txt'
+  html 'root_files/apple-touch-icon-114x114-precomposed.png'
+  html 'root_files/apple-touch-icon-57x57-precomposed.png'
+  html 'root_files/apple-touch-icon-72x72-precomposed.png'
+  html 'root_files/apple-touch-icon-precomposed.png'
+  html 'root_files/apple-touch-icon.png'
+  html 'root_files/favicon.ico'
 
   file 'layouts/boilerplate.html.haml', :to => 'app/views/layouts/boilerplate.html.haml'
   file 'layouts/_head.html.haml', :to => 'app/views/layouts/boilerplate/_head.html.haml'
@@ -48,11 +54,17 @@ if Compass.configuration.project_type == :stand_alone
 
   file 'javascripts/stand_alone/boilerplate.js', :to => 'static/js/boilerplate.js'
 
-  file '404.html', :to => "static/404.html"
-  file 'crossdomain.xml', :to => "static/crossdomain.xml"
-  file 'htaccess', :to => "static/.htaccess"
-  file 'humans.txt', :to => "static/humans.txt"
-  file 'robots.txt', :to => "static/robots.txt"
+  file 'root_files/404.html', :to => "static/404.html"
+  file 'root_files/crossdomain.xml', :to => "static/crossdomain.xml"
+  file 'root_files/htaccess', :to => "static/.htaccess"
+  file 'root_files/humans.txt', :to => "static/humans.txt"
+  file 'root_files/robots.txt', :to => "static/robots.txt"
+  file 'root_files/apple-touch-icon-114x114-precomposed.png', :to => "static/apple-touch-icon-114x114-precomposed.png"
+  file 'root_files/apple-touch-icon-57x57-precomposed.png', :to => "static/apple-touch-icon-57x57-precomposed.png"
+  file 'root_files/apple-touch-icon-72x72-precomposed.png', :to => "static/apple-touch-icon-72x72-precomposed.png"
+  file 'root_files/apple-touch-icon-precomposed.png', :to => "static/apple-touch-icon-precomposed.png"
+  file 'root_files/apple-touch-icon.png', :to => "static/apple-touch-icon.png"
+  file 'root_files/favicon.ico', :to => "static/favicon.ico"
 
 end
 

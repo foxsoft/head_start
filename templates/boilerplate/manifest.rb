@@ -12,17 +12,17 @@ if Compass.configuration.project_type == :rails
 
   file 'javascripts/boilerplate.js', :to => 'app/assets/javascripts/layouts/boilerplate.js'
 
-  html 'root_files/404.html'
-  html 'root_files/crossdomain.xml'
+  html 'root_files/404.html', :to => "404.html"
+  html 'root_files/crossdomain.xml', :to => "crossdomain.xml"
   html 'root_files/htaccess', :to => '.htaccess'
-  html 'root_files/humans.txt'
-  html 'root_files/robots.txt'
-  html 'root_files/apple-touch-icon-114x114-precomposed.png'
-  html 'root_files/apple-touch-icon-57x57-precomposed.png'
-  html 'root_files/apple-touch-icon-72x72-precomposed.png'
-  html 'root_files/apple-touch-icon-precomposed.png'
-  html 'root_files/apple-touch-icon.png'
-  html 'root_files/favicon.ico'
+  html 'root_files/humans.txt', :to => "humans.txt"
+  html 'root_files/robots.txt', :to => "robots.txt"
+  html 'root_files/apple-touch-icon-114x114-precomposed.png', :to => "apple-touch-icon-114x114-precomposed.png"
+  html 'root_files/apple-touch-icon-57x57-precomposed.png', :to => "apple-touch-icon-57x57-precomposed.png"
+  html 'root_files/apple-touch-icon-72x72-precomposed.png', :to => "apple-touch-icon-72x72-precomposed.png"
+  html 'root_files/apple-touch-icon-precomposed.png', :to => "apple-touch-icon-precomposed.png"
+  html 'root_files/apple-touch-icon.png', :to => "apple-touch-icon.png"
+  html 'root_files/favicon.ico', :to => "favicon.ico"
 
   file 'layouts/boilerplate.html.haml', :to => 'app/views/layouts/boilerplate.html.haml'
   file 'layouts/_head.html.haml', :to => 'app/views/layouts/boilerplate/_head.html.haml'

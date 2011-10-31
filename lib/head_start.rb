@@ -14,7 +14,7 @@ module HeadStart
         ActionView::Base.send :include, ::HeadStartRailsHelper
       end
       initializer 'head_start.precompile_assets', :after => "sprockets.environment" do |app|
-        Rails.application.config.assets.precompile += %w(modernizr.js layouts/*.js layouts *.css)
+        Rails.application.config.assets.precompile += %w(modernizr.js boilerplate.js layouts/*.js)
       end
     end
   end

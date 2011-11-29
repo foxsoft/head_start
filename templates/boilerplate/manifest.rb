@@ -1,6 +1,7 @@
 description "Compass extension for HTML5 Boilerplate located at http://html5boilerplate.com"
 
 if Compass.configuration.project_type == :rails
+  file 'stylesheets/rails/aplication.scss', :to => 'app/assets/stylesheets/application.css'
   file 'stylesheets/rails/boilerplate.scss', :to => 'app/assets/stylesheets/layouts/boilerplate.css.scss'
   file 'stylesheets/template.scss', :to => 'app/assets/stylesheets/boilerplate/template.css.scss'
   file 'stylesheets/_normalize.scss', :to => 'app/assets/stylesheets/boilerplate/_normalize.css.scss'

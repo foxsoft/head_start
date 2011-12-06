@@ -18,5 +18,6 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_development_dependency "compass"
+  s.add_dependency "compass", '0.12.alpha.2'
+  s.add_dependency "haml", '~> 3.1.4'
 end

@@ -23,5 +23,5 @@
     -# include various Javascript goodness at the bottom of the page for faster page loading
     -#
       to specify a stylesheet other than application, send a local variable to the javascripts partial, eg:
-      :locals => {:javascripts => "name_of_javascript"}
-    = render :partial => "layouts/boilerplate/javascripts", :locals => {:stylesheet => "boilerplate"}
+      :locals => {:javascript => "name_of_javascript"}
+    = render :partial => "layouts/boilerplate/javascripts", :locals => {:javascript => "boilerplate"}

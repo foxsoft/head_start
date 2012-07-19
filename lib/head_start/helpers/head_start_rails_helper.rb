@@ -55,6 +55,11 @@ module HeadStartRailsHelper
     link.html_safe
   end
 
+  def title(page_title = "", show_on_page = true)
+    content_for(:title) { h(page_title.to_s) }
+    haml_tag "h2", page_title.to_s.upcase if show_on_page
+  end
+
   private
 
     def add_class(name, attrs)

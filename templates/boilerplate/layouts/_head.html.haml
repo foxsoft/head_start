@@ -1,6 +1,6 @@
 %meta{ :charset => "utf-8" }/
 %title
-  == #{ controller.controller_name.titleize } - #{ controller.action_name.titleize }
+  = "Project_name :: " + (yield(:title).empty? ? "Untitled" : yield(:title))
 
 %meta{ :name => "description", :content => "" }/
 %meta{ :name => "author", :content => "" }/
